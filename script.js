@@ -42,3 +42,19 @@ function operate(num1,operatorn,num2){
             return "Error: Invalid operator";
     }
 }
+
+
+// button press should give content
+const abuttons = document.querySelectorAll('button');
+
+        // Loop through all the buttons
+        abuttons.forEach(button => {
+            // Add event listener for click event
+            button.addEventListener('click', function() {
+                // Get the text content of the button
+                const buttonText = button.textContent;
+
+                // Log the button text to the console
+                console.log('Button clicked: ' + buttonText);
+            });
+        });
