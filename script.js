@@ -1,9 +1,9 @@
 //declare variables
 
-let num1;
-let num2;
+let num1 = "";
+let num2 = "";
 let operator;
-
+const displayScreen = document.getElementById("display")
 
 function addNumbers(a,b){
     return a + b;
@@ -53,8 +53,11 @@ const abuttons = document.querySelectorAll('button');
             button.addEventListener('click', function() {
                 // Get the text content of the button
                 const buttonText = button.textContent;
-
+                num1 = num1 + buttonText;
                 // Log the button text to the console
-                console.log('Button clicked: ' + buttonText);
+                console.log('Button clicked: ' + num1);
+                displayScreen.textContent = num1;
             });
         });
+
+

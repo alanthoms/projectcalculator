@@ -16,7 +16,7 @@ body{
     padding: 20px;
 }
 
-.display {
+#display {
     width: 100%;
     height: 5vh;
     background: #333;
