@@ -22,7 +22,7 @@ function divNumbers(a,b){
     if(b != 0){
         return a / b;
     } else{
-        return 0;
+        return "Error: Division by 0";
     }
 }
 
@@ -63,7 +63,13 @@ const abuttons = document.querySelectorAll('button');
                     if(num1 != "" && operator != "" && num2 != ""){
                         console.log("hollo");
                         const result = operate(parseFloat(num1),operator,parseFloat(num2));
-                        
+                        if (result === "Error: Division by 0") {
+                            displayScreen.textContent = result;  // Show error on the screen
+                            num1 = "";  // Clear the variables
+                            num2 = "";
+                            operator = "";
+                            return;
+                        }            
                         num1 = result.toString();
                         num2 = "";
                         operator = "";
