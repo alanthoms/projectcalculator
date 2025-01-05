@@ -61,3 +61,6 @@ const abuttons = document.querySelectorAll('button');
         });
 
 
+document.querySelector('.clear').addEventListener('click', () => {
+    displayScreen.textContent = "";
+});
