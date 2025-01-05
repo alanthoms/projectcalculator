@@ -2,7 +2,7 @@
 
 let num1 = "";
 let num2 = "";
-let operator;
+let operator = "";
 const displayScreen = document.getElementById("display")
 
 function addNumbers(a,b){
@@ -28,16 +28,16 @@ function divNumbers(a,b){
 
 //function that takes operator and nums and uses above function
 
-function operate(num1,operatorn,num2){
-    switch (operator) {
+function operate(num1f,operatorf,num2f){
+    switch (operatorf) {
         case '+':
-            return addNumbers(num1, num2);
+            return addNumbers(num1f, num2f);
         case '-':
-            return minusNumbers(num1, num2);
+            return minusNumbers(num1f, num2f);
         case '*':
-            return multNumbers(num1, num2);
+            return multNumbers(num1f, num2f);
         case '/':
-            return divNumbers(num1, num2);
+            return divNumbers(num1f, num2f);
         default:
             return "Error: Invalid operator";
     }
@@ -52,11 +52,48 @@ const abuttons = document.querySelectorAll('button');
             // Add event listener for click event
             button.addEventListener('click', function() {
                 // Get the text content of the button
+
+
+                
                 const buttonText = button.textContent;
-                num1 = num1 + buttonText;
-                // Log the button text to the console
-                console.log('Button clicked: ' + num1);
-                displayScreen.textContent = num1;
+                if (button.classList.contains("equal")){
+                    console.log("num1:", num1);   // Debug log for num1
+                    console.log("operator:", operator); // Debug log for operator
+                    console.log("num2:", num2);  // Debug log for num2
+                    if(num1 != "" && operator != "" && num2 != ""){
+                        console.log("hollo");
+                        const result = operate(parseFloat(num1),operator,parseFloat(num2));
+                        
+                        num1 = result.toString();
+                        num2 = "";
+                        operator = "";
+                        console.log(num1);
+                        displayScreen.textContent = num1;
+                    }
+                    
+                    return;
+                }
+
+                //if its a number then work with num1 and 2
+                // but num1 if operator empty otherwise num2
+                if (!isNaN(buttonText)) {
+                    if (operator === ""){
+                        num1 = num1 + buttonText;
+                        // Log the button text to the console
+                        console.log('Button clicked: ' + num1);
+                    }  else{
+                        num2 = num2 + buttonText;
+
+                        console.log('Button clicked: ' + num2);
+                    }
+                } else if (button.classList.contains("operation")){
+                    // if num1 isnt empty though
+                    if (num1 !== ""){
+                    operator = buttonText;
+                    console.log("operator pressed : " + operator);
+                    }
+                }
+                displayScreen.textContent = num1 + operator + num2;
             });
         });
 
@@ -64,6 +101,6 @@ const abuttons = document.querySelectorAll('button');
 document.querySelector('.clear').addEventListener('click', () => {
     displayScreen.textContent = "Press Buttons";
     num1 = "";
-    num1 = "";
+    num2 = "";
     operator = "";
 });
