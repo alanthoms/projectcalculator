@@ -62,5 +62,8 @@ const abuttons = document.querySelectorAll('button');
 
 
 document.querySelector('.clear').addEventListener('click', () => {
-    displayScreen.textContent = "";
+    displayScreen.textContent = "Press Buttons";
+    num1 = "";
+    num1 = "";
+    operator = "";
 });
